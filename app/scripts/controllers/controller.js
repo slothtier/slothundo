@@ -14,9 +14,20 @@ angular.module('myApp', [])
 
     $scope.histories = [];
     $scope.visits = [];
-    $scope.his = $scope.histories[0];
+    var resultLimit = 15;
+    chrome.tabs.get(4328, function(tabInfo){
+      $scope.tab = tabInfo;
+    })
 
-    chrome.history.search({text:'', maxResults:50}, function(historyItems) {
+    $scope.removed = '';
+
+
+    chrome.tabs.onRemoved.addListener(function(tabId) {
+      $scope.removed = tabId;
+      console.log('closed!')
+    });
+
+    chrome.history.search({text:'', maxResults:resultLimit}, function(historyItems) {
       var historiesProcessed = 0;
       for (var i = 0; i < historyItems.length; i++) {
         $scope.histories.push(historyItems[i]);
@@ -30,7 +41,7 @@ angular.module('myApp', [])
           }
         });
       }
-      $scope.his = $scope.histories[1].title;
+
       console.log($scope.histories.length + ' histories');
     });
 

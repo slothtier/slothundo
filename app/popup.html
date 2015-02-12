@@ -6,16 +6,24 @@
 <body>
 <div id="main_wrapper" ng-controller="MainCtrl">
   <header>
-    <h1>My Marks</h1>
+    <h1>Recent Visits</h1>
   </header>
-  {{date}}
-  {{histories}}
-  asd
-  {{his}}
 
-  <section id="my_marks">
 
-  </section>
+  <div ng-repeat="history in histories">
+    <a href="{{history.url}}" target="_blank">
+      {{history.title}}
+    </a>
+  </div>
+<h2>test</h2>
+
+    {{histories[0]}}
+  {{tab}}
+  removed:
+  {{removed}}
+
+
+
 </div>
 
 
