@@ -1,13 +1,11 @@
 'use strict';
-
-chrome.runtime.onInstalled.addListener(function (details) {
-  console.log('previousVersion', details.previousVersion);
+angular.module('myApp', [])
+.run(function() {
+    chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
+      console.log('closed: '+tabId)
+    });
+  console.log('Im running!');
 });
-$scope.removed = '';
-chrome.tabs.onRemoved.addListener(function(tabId){
-  $scope.removed = tabId;
-  alert('closed!')
-})
-chrome.browserAction.setBadgeText({text: '\'Allo'});
 
-console.log('\'Allo \'Allo! Event Page for Browser Action');
+
+

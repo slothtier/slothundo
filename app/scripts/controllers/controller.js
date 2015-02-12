@@ -15,17 +15,9 @@ angular.module('myApp', [])
     $scope.histories = [];
     $scope.visits = [];
     var resultLimit = 15;
-    chrome.tabs.get(4328, function(tabInfo){
+    chrome.tabs.get(778, function(tabInfo){
       $scope.tab = tabInfo;
     })
-
-    $scope.removed = '';
-
-
-    chrome.tabs.onRemoved.addListener(function(tabId) {
-      $scope.removed = tabId;
-      console.log('closed!')
-    });
 
     chrome.history.search({text:'', maxResults:resultLimit}, function(historyItems) {
       var historiesProcessed = 0;
