@@ -35,7 +35,7 @@ angular.module('myApp', [])
 
         console.log($scope.histories.length + ' histories');
 
-
+        $scope.$apply();
         chrome.tabs.getAllInWindow(function (tabs){
           console.log('tabs: '+tabs.length)
           angular.forEach(tabs, function(tab){
