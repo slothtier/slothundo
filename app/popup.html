@@ -6,32 +6,28 @@
 <body>
 <div id="main_wrapper" ng-controller="MainCtrl">
   <header>
-    <h1>Recent Visits</h1>
+    <h1>Recent Visits ( = complete History)</h1>
   </header>
 
-
-  <div ng-repeat="history in histories">
+  <div ng-repeat="history in histories | limitTo:15">
     <a href="{{history.url}}" target="_blank">
-      {{history.title}}
+      {{$index}} {{history.title}}
     </a>
   </div>
-<h2>test</h2>
-
-    {{histories[0]}}
+<h2>Raw History</h2>
+  histories[0]
+  {{histories[0]}}
+  <br>
+  tab
   {{tab}}
-  removed:
-  {{removed}}
-
-
-
 </div>
 
 
 <script src="bower_components/angular/angular.min.js"></script>
 
-
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers/controller.js"></script>
-<script src="scripts/directives/directive.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/controllers/controller.js"></script>
+<script type="text/javascript" src="scripts/directives/directive.js"></script>
+<script type="text/javascript" src="scripts/popup.js"></script>
 </body>
 </html>
