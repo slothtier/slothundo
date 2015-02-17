@@ -6,23 +6,16 @@
 <body>
 <div id="main_wrapper" ng-controller="MainCtrl">
   <header>
-    <h1>Recent Visits ( = complete History)</h1>
+    <h1>Recent Tabs</h1>
   </header>
 
-  <div ng-repeat="history in histories | limitTo:15">
-    <a href="{{history.url}}" target="_blank">
-      {{$index}} {{history.title}}
-    </a>
+  <div ng-repeat="history in histories | filter:filterAlreadyAdded | limitTo:15">
+    <p>
+      <a href="{{history.url}}" target="_blank">
+        {{$index}} {{history.title}}
+      </a>
+    </p>
   </div>
-<h2>Raw History</h2>
-  histories[0]
-  {{histories[0]}}
-  <br>
-  tab
-  {{tab}}
-  <div ng-repeat="openTabs in allOpenTabs">
-  {{$index}} {{openTabs}}
-</div>
 
 
 <script src="bower_components/angular/angular.min.js"></script>
